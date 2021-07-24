@@ -8,6 +8,8 @@ function pressEnter(event){
 //create main div
 const postContainer = document.createElement('div')
 postContainer.setAttribute('id', 'postContainer')
+const doneContainer = document.createElement('div')
+doneContainer.setAttribute('id', 'doneContainer')
 
 
 //when add task button clicked
@@ -22,7 +24,7 @@ const clickCallback = () => {
         const p1 = document.createElement('p')
         p1.innerHTML = inputTask.value
         document.body.append(postContainer)//add post container to HTML
-
+        document.body.append(doneContainer)//add done container below postcontainer
         postContainer.prepend(div1) //add new div ontop of old div
         div1.append(p1) //add p in new div
         //done button
@@ -32,7 +34,13 @@ const clickCallback = () => {
         doneButton.innerHTML = 'DONE'
         div1.append(doneButton)
         doneButton.addEventListener('click', () => {
-
+            postContainer.removeChild(div1)
+            const temp = p1.innerHTML
+            p1.innerHTML = '<del>' + temp + '</del'
+            doneContainer.prepend(div1)
+            div1.removeChild(deleteButton)
+            div1.removeChild(doneButton)
+        
         })
         //delete button
         const deleteButton = document.createElement('button')
