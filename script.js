@@ -1,4 +1,3 @@
-import "tailwindcss/tailwind.css"
 const inputTask = document.querySelector('#inputTask')
 //const storedPost = localStorage.getItem('postContainer')
 //const storedDone = localStorage.getItem('doneContainer')
